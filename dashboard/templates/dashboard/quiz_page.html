@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <title>Home</title>
+
+    <style type="text/css">
+
+      .temp-class {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem;
+      }
+
+      .question {
+        border-left:0.3rem solid springgreen;
+        width: 80%;
+        padding: 0.2rem;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 0.5rem 0;
+      }
+
+      .title {
+        padding: 0.2rem;
+        text-align: center;
+
+      }
+
+      .details p {
+        margin: 0.5rem 0;
+        padding: 0.5rem 0;
+        border-top: 0.1rem solid gray;
+        border-bottom: 0.1rem solid gray;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+        .options p{
+        }
+
+/*      @media only screen and (max-width:800px){
+        .question {
+          width: 80%;
+        }
+      }*/
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Solvify :  Jay  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Activities</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <div class="logout-button text-white">
+              Logout
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid mt-3 mb-3">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">testing</h1>
+          <hr class="gray">
+        </div>
+      </div>
+    </div>
+
+    <form action="" method="POST">
+    	{% csrf_token %}
+	    <div class="temp-class text-dark">
+	    	{% for question in questions.all %}
+		        <div class="question">
+		          <div class="title">
+		            <h4>Question - {{ question.id }}</h4>
+		          </div>    
+		          <div class="details">
+		            <p class="text-center">
+		              {{ question.description }}
+		            </p>
+		          </div> 
+		          <div class="options">
+		            <p> <input type="radio" name="{{ question.id }}" value="A" required> {{ question.option1 }} </p>
+		            <p> <input type="radio" name="{{ question.id }}" value="B" required> {{ question.option2 }} </p>
+		            <p> <input type="radio" name="{{ question.id }}" value="C" required> {{ question.option3 }} </p>
+		            <p> <input type="radio" name="{{ question.id }}" value="D" required> {{ question.option4 }} </p>
+		          </div>    
+		        </div>
+
+		        <hr>
+	        {% endfor %}
+	        <input class="btn btn-success mb-3" type="submit" value="Submit">
+	    </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+
+</body>
+</html>

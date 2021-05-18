@@ -1,0 +1,89 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Login</title>
+    <style type="text/css">
+
+    	body {
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+    		justify-content: center;
+    		margin: 5em 0;
+    		background: linear-gradient(90deg,springgreen,black,springgreen);
+    	}
+
+    	.main {
+    		width: 80%;
+    		position: absolute;
+    		top: 50%;
+    		left: 50%;
+    		transform: translate(-50%,-50%);
+    	}
+
+    	.temp-class {
+    		margin: 1rem 0;
+    	}
+
+    		.temp-class label {
+    			color: white;
+    			width: 100%;
+    			padding: 0.5rem;
+    			font-size: 1.2rem;
+    		}
+
+        .register-link {
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid main">
+            {% if message %}
+            <div class="alert bg-danger alert-dismissible fade show text-white" role="alert">
+              <strong>{{ message }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endif %}
+
+			<form class="form-signin" action="" method="post">
+				{% csrf_token %}
+		      <div class="text-center">
+		        <h1 class="h1 font-weight-normal text-white">Solvify : Login</h1>
+		      </div>
+
+		      <div class="form-label-group temp-class">
+		      	<label>Username*</label>
+		        <input type="text" name="username" class="form-control" placeholder="Enter Username" required autofocus>
+		      </div>
+
+		      <div class="form-label-group temp-class">
+		      	<label>Password*</label>
+		        <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+		      </div>
+
+		      <button class="btn btn-lg btn-primary" type="submit">Login</button>
+
+              <div class="text-center mb-4">
+                <p class="p mb-3 font-weight-normal text-white register-link">Don't have an account?
+                    <a href="{% url 'register' %}">Register</a>
+                </p>
+              </div>              
+		   </form>		 
+	</div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
